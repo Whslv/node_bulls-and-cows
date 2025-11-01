@@ -16,13 +16,19 @@ function ask() {
   rl.question('What are your 4 digits?', (digits) => {
     const trimedDigits = digits.trim();
     const digitsValid = checkIsValidUserInput(trimedDigits);
-    const { bulls } = getBullsAndCows(trimedDigits, randomNumber);
+    const { bulls, cows } = getBullsAndCows(trimedDigits, randomNumber);
 
     if (!digitsValid) {
       throw new Error('Digits are not valid');
     } else if (bulls === 4) {
+      // eslint-disable-next-line no-console
+      console.log(`Your guess is correct: ${trimedDigits}`);
       rl.close();
     } else {
+      // eslint-disable-next-line no-console
+      console.log(`Your guess: ${trimedDigits}`);
+      // eslint-disable-next-line no-console
+      console.log(`Result: ${bulls} bulls, ${cows} cows`);
       ask();
     }
   });
