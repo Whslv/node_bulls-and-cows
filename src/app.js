@@ -19,7 +19,9 @@ function ask() {
     const { bulls, cows } = getBullsAndCows(trimedDigits, randomNumber);
 
     if (!digitsValid) {
-      throw new Error('Digits are not valid');
+      // eslint-disable-next-line no-console
+      console.log('Digits are not valid');
+      ask();
     } else if (bulls === 4) {
       // eslint-disable-next-line no-console
       console.log(`Your guess is correct: ${trimedDigits}`);
